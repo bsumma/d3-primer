@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>D3 Clamping a Scale</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
 </head>
 <body>
 <svg height="300" width="800">
@@ -16,13 +16,13 @@
         var data = [0.3, 0.01, 1.5, 2];
 
         // here we define the scale
-        var xScale = d3.scale.linear()
+        var xScale = d3.scaleLinear()
                 // the domain defines the value range of the input dataset
                 .domain([0, 1.5])
                 // the range defines to which range you want to map the input dataset.
                 .range([0, 500])
         // uncomment to see the effect of clamping
-               .clamp(true);
+               .clamp(false);
 
         var svg = d3.select("svg");
         svg.selectAll("rect")

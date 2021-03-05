@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>D3 Axes</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
 </head>
 <body>
 <svg>
@@ -14,11 +14,7 @@
     var height = 400;
     var width = 800;
 
-    var svg = d3.select("svg");
-    svg.attr({
-        width: width,
-        height: height
-    })
+    var svg = d3.select("svg").attr("width", width).attr("height", height)
 
     var execute = function () {
 
@@ -26,17 +22,13 @@
         var spacing = height / data.length;
         var min = -1.45, max = 1.45;
 
-        var xScale = d3.scale.linear()
+        var xScale = d3.scaleLinear()
                 .domain([min, max])
                 .range([0, 800]);
 
-        var color = d3.scale.linear()
+        var color = d3.scaleLinear()
                 .domain([min, 0, max])
                 .range(["darkred", "lightgray", "steelblue"]);
-
-        var xAxis  = d3.svg.axis();
-        xAxis.scale(xScale);
-        xAxis.orient("bottom");
 
         svg.selectAll("rect")
                 .data(data)
@@ -57,7 +49,9 @@
                     // here we apply the color scale
                     return color(d);
                 })
-        svg.append("g").call(xAxis);
+		          
+		 var xAxis  = d3.axisBottom().scale(xScale);	 
+       svg.append("g").call(xAxis);
     }
 </script>
 <script src="run.js" charset="utf-8"></script>

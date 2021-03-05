@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>D3 SelectAll</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
     <style>
         rect {
             fill: lightgray;
@@ -23,7 +23,7 @@
     var execute = function () {
         var svg = d3.select("svg")
         svg.selectAll("rect")
-                .data([127, 300, 10])
+                .data([127, 300, 10, 1222, 12, 1222])
                 .attr("x", 0)
                 .attr("y", function(d,i) { return i*90+50 })
                 .attr("width", function(d,i) { return d; })
