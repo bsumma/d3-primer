@@ -19,16 +19,16 @@
             {x: 400, y: 150}
         ]
 
-        var lineFn = d3.svg.line()
+        var lineFn = d3.line()
                 .x(function (d) {
                     return d.x
                 })
                 .y(function (d) {
                     return d.y
                 })
-        //.interpolate("linear")
-        //.interpolate("monotone")
-        .interpolate("basis")
+			    .curve(d3.curveLinear);
+			    //(curveLinear, curveCardinal, curveCatmullRom, curveMonotone, curveNatural and curveStep, curveBasis and curveBundle).
+
 
         var svg = d3.select("svg")
 
